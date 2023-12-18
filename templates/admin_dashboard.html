@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin deshboard</title>
+</head>
+<body>
+    <a href="{{url_for('add_doctor')}}">Add doctor</a>
+    <h1>doctor information</h1>
+      {% for i in doctor %}
+        <li>  {{i[4]}} </li>
+        <h2>Patients information treated by {{i[4]}}</h2>
+        {% for j in patients %}
+            {% if i[0]==j[2] %}
+                <li>{{j}}</li>
+                <p>Total amount:{{i[5]+j[3]}}</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    <h1><p>Total patietns bills: {{total_amount}}</p></h1>
+</body>
+</html>
